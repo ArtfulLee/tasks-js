@@ -102,3 +102,45 @@ console.log(duplicateCount('Indivisibility')) // 1
 console.log(duplicateCount('Indivisibilities')) // 2
 console.log(duplicateCount('aA11')) // 2
 console.log(duplicateCount('ABBA')) // 2
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Given an array of integers, find the one that appears an odd number of times.
+//
+// There will always be only one integer that appears an odd number of times.
+//
+// Examples
+// [7] should return 7, because it occurs 1 time (which is odd).
+// [0] should return 0, because it occurs 1 time (which is odd).
+// [1,1,2] should return 2, because it occurs 1 time (which is odd).
+// [0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+// [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function findOdd(array) {
+  if (!Array.isArray(array)) return "It's not array"
+  if (array.length === 0) return 'Array is empty' // Если массив пустой, вернуть текстовую информацию
+  if (array.length === 1) return array[0] // Если в массиве 1 элемент, вернуть его
+
+  const objectOfKey = {} // Объект для хранения повторений, ключ = элемент массива, значение = счетчик
+
+  // Итерируемся по каждому элементу массива
+  // Если в объекте objectOfKey нет ключа по elem, то добавляем такой ключ со значением свойства = 1
+  // Если в объекте objectOfKey найден ключ по elem, то значение свойства увеличиваем на +1
+  for (const elem of array) {
+    if (Object.hasOwn(objectOfKey, elem)) {
+      objectOfKey[elem]++
+    } else {
+      objectOfKey[elem] = 1
+    }
+  }
+
+  // Интерируемся по объекту objectOfKey
+  // Ищем ключ, значение которого будет давать остаток при делении, это наш искомый результат функции
+  for (const key in objectOfKey) {
+    if (objectOfKey[key] % 2 !== 0) return key
+  }
+}
+
+console.log(findOdd('String'))
+console.log(findOdd([1, 1, 2]))
+console.log(findOdd([20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5]))
