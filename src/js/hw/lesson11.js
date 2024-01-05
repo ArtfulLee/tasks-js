@@ -137,7 +137,7 @@ function findOdd(array) {
   // Интерируемся по объекту objectOfKey
   // Ищем ключ, значение которого будет давать остаток при делении, это наш искомый результат функции
   for (const key in objectOfKey) {
-    if (objectOfKey[key] % 2 !== 0) return key
+    if (objectOfKey[key] % 2 !== 0) return Number(key)
   }
 }
 
