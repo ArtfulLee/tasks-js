@@ -18,7 +18,7 @@ console.log(abbrevName('Sam Harris')) // "S.H"
 /////////////////////////////////////////////////////////////////////////////////
 
 function countPositivesSumNegatives(arrOfNumbers) {
-  if (!arrOfNumbers?.length || arrOfNumbers === null) return [] // Проверка на длинну массива
+  if (!arrOfNumbers?.length) return [] // Проверка на длинну массива
 
   let result = [] // Массив для возврата решения
   let positiveCounter = 0 // Счетчик положительных чисел
