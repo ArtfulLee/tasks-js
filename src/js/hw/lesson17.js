@@ -67,3 +67,29 @@ function getDoubleOfArray(array) {
 }
 
 console.log(getDoubleOfArray([1, 2, 3, 4, 5])) // [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+
+/////////////////////////////////////////////////////////////////////////////////
+// Расширенная форма числа
+/////////////////////////////////////////////////////////////////////////////////
+
+function expandedForm(num) {
+  let numToString = num.toString() // Перевод числа в строку
+  let numberOfZeroRight = numToString.length // количество нулей справа от числа
+  const tempNubersArr = [] // Массив для хранения полученых чисел с нулями справа
+
+  // Итерируемся по элементам строки
+  for (num of numToString) {
+    numberOfZeroRight-- // Уменьшаем кол-во нулей справа при каждой интерации по элементу строки
+
+    if (num === '0') continue // цифру 0 не обрабатываем
+
+    tempNubersArr.push(`${num}${'0'.repeat(numberOfZeroRight)}`) // Складываем число в массив чисел с нулями справа
+  }
+
+  return tempNubersArr.join(' + ') // Конкатенируем элементы массива через  знак плюс и возвращаем требуемую строку
+}
+
+console.log(expandedForm(12)) // Should return '10 + 2'
+console.log(expandedForm(42)) // Should return '40 + 2'
+console.log(expandedForm(70304)) // Should return '70000 + 300 + 4
+console.log(expandedForm(10205307)) // Should return '10000000 + 200000 + 5000 + 300 + 7
