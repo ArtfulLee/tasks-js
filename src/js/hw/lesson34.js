@@ -20,12 +20,13 @@ const user2 = {
  * @param {number} user[].age
  */
 function getFormattedFullName(user) {
-  // your code
+  user.lastName = user.lastName.toUpperCase()
+  return `${user.firstName} ${user.lastName}`
 }
 
 // Sample usage - do not modify
-getFormattedFullName(user1) // "Sam DOE"
-getFormattedFullName(user2) // "Charlie FORT"
+console.log(getFormattedFullName(user1)) // "Sam DOE"
+console.log(getFormattedFullName(user2)) // "Charlie FORT"
 
 /* ***********************************************************
 Завершите функцию, чтобы она возвращала инициалы пользователя.
@@ -49,12 +50,12 @@ const user22 = {
  * @param {number} user[].age
  */
 function getInitials(user) {
-  // your code
+  return `${user.firstName[0]}${user.lastName[0]}`
 }
 
 // Sample usage - do not modify
-getInitials(user12) // "SD"
-getInitials(user22) // "CF"
+console.log(getInitials(user12)) // "SD"
+console.log(getInitials(user22)) // "CF"
 
 /* ***********************************************************
 Завершите функцию, чтобы она возвращала строку:
@@ -80,12 +81,12 @@ const user23 = {
  * @param {number} user[].age
  */
 function getVotingMessage(user) {
-  // your code
+  return user.age > 17 ? 'You can vote' : 'You cannot vote'
 }
 
 // Sample usage - do not modify
-getVotingMessage(user13) // "You cannot vote"
-getVotingMessage(user23) // "You can vote"
+console.log(getVotingMessage(user13)) // "You cannot vote"
+console.log(getVotingMessage(user23)) // "You can vote"
 
 /* ***********************************************************
 Завершите функцию, чтобы она добавила ключ numberOfChapters в объект course.
@@ -105,13 +106,14 @@ const course2 = {
  * @param {number} count
  */
 function addNumberOfChapters(course, count) {
-  // your code
+  course.numberOfChapters = count
+  return course
 }
 
 // Sample usage - do not modify
-addNumberOfChapters(course1, 80)
+console.log(addNumberOfChapters(course1, 80))
 // { name: 'Learn English', isCompleted: true, numberOfChapters: 80 }
-addNumberOfChapters(course2, 60)
+console.log(addNumberOfChapters(course2, 60))
 // { name: 'Learn JavaScript', isCompleted: false, numberOfChapters: 60 }
 
 /* ***********************************************************
@@ -130,8 +132,8 @@ const game = {
  * @param {number} game.releaseYear
  */
 function getNumberOfTags(game) {
-  // your code
+  return game.tags.length
 }
 
 // Sample usage - do not modify
-getNumberOfTags(game) // 3
+console.log(getNumberOfTags(game)) // 3
