@@ -21,7 +21,8 @@ const students = [
 ]
 
 function getSumGrades(students) {
-  // your code
+  const sumGrades = students.reduce((sum, student) => sum + student.learnEnglish.grade, 0)
+  return sumGrades
 }
 
 // Sample usage - do not modify
@@ -45,7 +46,8 @@ const users = [
 ]
 
 function getFullNames(users) {
-  // your cude
+  const fullNames = users.map((user) => `${user.firstName} ${user.lastName}`)
+  return fullNames
 }
 
 // Sample usage - do not modify
