@@ -31,7 +31,10 @@ console.log(math.multiply());
 
 // class definition
 class Recipe {
-  // your code
+  constructor(name, colories) {
+    this.name = name;
+    this.colories = colories;
+  }
 }
 
 // class usage
@@ -54,12 +57,21 @@ class Recipe1 {
     this.calories = calories;
   }
 
-  // your code
+  isLowCaloric() {
+    if (this.calories <= 400) return true;
+  }
+
+  isHighCaloric() {
+    if (this.calories >= 600) return true;
+  }
 }
 
 // class usage
-const pasta1 = new Recipe('Pasta', 700);
-const salad2 = new Recipe('Salad', 350);
+const pasta1 = new Recipe1('Pasta', 700);
+const salad1 = new Recipe1('Salad', 350);
+
+console.log(pasta1.isHighCaloric());
+console.log(salad1.isLowCaloric());
 
 /* *********************************************************** */
 // Реализуйте следующие методы экземпляра для класса User:
@@ -70,15 +82,36 @@ const salad2 = new Recipe('Salad', 350);
 
 // class definition
 class User {
-  // your code
+  constructor(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+
+  getFullName() {
+    return `${this?.firstName || ``} ${this?.lastName || ``}`;
+  }
+
+  getInitials() {
+    // Если есть Имя, то возвращаем первый символ с точкой в конце, иначе - пустоту
+    let initialFirstName = this?.firstName[0] ? this.firstName[0] + '.' : ``;
+    // Если есть Фамилия, то возвращаем первый символ с точкой в конце, иначе - пустоту
+    let initialLastName = this?.lastName[0] ? this.lastName[0] + '.' : ``;
+
+    return `${initialFirstName}${initialLastName}`;
+  }
+
+  canVote() {
+    return this.age >= 18;
+  }
 }
 
 // class usage
 const sam = new User('Sam', 'Blue', 49);
-sam.getFullName();
+console.log(sam.getFullName());
 
 const charlie = new User('Charlie', 'Doe', 13);
-charlie.getFullName();
+console.log(charlie.getFullName());
 
 /* *********************************************************** */
 // Определите класс Writer, содержащий следующие методы экземпляра:
@@ -88,7 +121,7 @@ charlie.getFullName();
 /* *********************************************************** */
 
 // class definition
-class User {
+class User1 {
   constructor(firstName, lastName, age) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -104,13 +137,19 @@ class User {
   }
 }
 
+class Writer1 extends User1 {
+  publishArticle() {
+    console.log(`Article published`);
+  }
+}
+
 // your code
 
 // class usage
-const user = new User('Sam', 'Smith', 30);
+const user1 = new User1('Sam', 'Smith', 30);
 // {firstName: 'Sam', lastName: 'Smith', age: 30}
 
-const writer = new Writer('Tom', 'Roth', 20);
+const writer1 = new Writer1('Tom', 'Roth', 20);
 // {firstName: 'Tom', lastName: 'Roth', age: 20}
 
-writer.publishArticle(); // Article published
+console.log(writer1.publishArticle()); // Article published
